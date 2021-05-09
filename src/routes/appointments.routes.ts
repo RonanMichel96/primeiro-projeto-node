@@ -1,9 +1,20 @@
 import {Router} from 'express';
+import {uuid} from 'uuidv4';
 
 const appointmentsRouter= Router();
+const appointments= [];
 
 appointmentsRouter.post('/', (request, response) =>{
-    return response.json({mensage: 'CHAMOU AQUI'});
+    const {provider, date}= request.body;
+
+    const appointment= {
+        id: uuid(),
+        provider,
+        date
+    }
+    appointments.push(appointmentsRouter);
+    
+    return response.json({appointment});
 });
 
 export default appointmentsRouter;
