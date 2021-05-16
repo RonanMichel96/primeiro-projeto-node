@@ -10,9 +10,11 @@ usersRouter.post('/', async (request, response) =>{
 
         const createUser= new CreateUserService();
 
-        const user= await createUser.execute({name,email,password});
+        const user= await createUser.execute({name, email, password});
+        //delete user.password: Deu erro no typeScript
+        //return response.json(user)
 
-        return response.json({user});
+        return response.json({id: user.id, name, email});
     }catch (err){
         return response.status(400).json({error: err.message})
     }
