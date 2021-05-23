@@ -10,16 +10,8 @@ interface Request{
     password: string;
 }
 
-interface UserInterface{
-    id: string,
-    name: string,
-    email: string,
-    created_at: Date,
-    updated_at: Date
-}
-
 interface Response{
-    user: UserInterface,
+    user: User
     token: string,
 
 }
@@ -46,15 +38,10 @@ class AuthenticateUserService{
             subject: user.id,
             expiresIn,
         });
+        delete user.password;
 
         const response= {
-            user: {
-                id: user.id, 
-                name: user.name, 
-                email: user.email,
-                created_at: user.created_at,
-                updated_at: user.updated_at
-            }, 
+            user, 
             token
         };
 
