@@ -18,10 +18,10 @@ class User{
     @Column()
     avatar: string;
 
-    @Column('timestamp with time zone')
+    @CreateDateColumn()
     created_at: Date;
 
-    @Column('timestamp with time zone')
+    @UpdateDateColumn()
     updated_at: Date;
 }
 
